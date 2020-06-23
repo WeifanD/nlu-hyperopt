@@ -10,8 +10,9 @@ pipeline:
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
-    min_ngram: 1
-    max_ngram: 4
+    max_df: {max_df}
+    min_ngrams: {min_ngrams}
+    max_ngrams: {max_ngrams}
   - name: DIETClassifier
     epochs: {epochs}
   - name: EntitySynonymMapper
