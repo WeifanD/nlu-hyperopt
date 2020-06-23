@@ -2,9 +2,17 @@
 # Replace parameters which you want to optimize with their name in 
 # curly brackets, e.g. `"epochs": 100` becomes `"epochs": {epochs}`.
 
-language: en
+language: "zh"
 pipeline:
-- name: "WhitespaceTokenizer"
-- name: "CountVectorsFeaturizer"
-- name: "DIETClassifier"
-  epochs: {epochs}
+  - name: JiebaTokenizer
+  - name: RegexFeaturizer
+  - name: LexicalSyntacticFeaturizer
+  - name: CountVectorsFeaturizer
+  - name: CountVectorsFeaturizer
+    analyzer: "char_wb"
+    min_ngram: 1
+    max_ngram: 4
+  - name: DIETClassifier
+    epochs: {epochs}
+  - name: EntitySynonymMapper
+
