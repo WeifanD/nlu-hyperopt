@@ -6,14 +6,13 @@ language: "zh"
 pipeline:
   - name: JiebaTokenizer
   - name: RegexFeaturizer
-  - name: LexicalSyntacticFeaturizer
   - name: CountVectorsFeaturizer
   - name: CountVectorsFeaturizer
     analyzer: "char_wb"
-    max_df: {max_df}
-    min_ngrams: {min_ngrams}
-    max_ngrams: {max_ngrams}
+    min_ngram: 1
+    max_ngram: 4
   - name: DIETClassifier
     epochs: {epochs}
+    batch_strategy: sequence
   - name: EntitySynonymMapper
 
